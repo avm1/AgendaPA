@@ -1,160 +1,92 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1"> 
-        <title>Connected</title> 
-        
-        
-        <link rel="stylesheet" href="jquery.mobile-1.4.5.min.css" /> 	
-		<script type="text/javascript" charset="utf-8" src="jquery-1.12.3.min.js"></script>              
-        <script type="text/javascript" charset="utf-8" src="jquery.mobile-1.4.5.min.js"></script> 
-        
-        
-        <script type="text/javascript" charset="utf-8">
-        $(document).on('pagebeforeshow', '#one', function(){     
-            $('.news-chanel').on('click',function(e, data){     
-                rss_url_map = {
-                    'cnn-top-stories':'http://rss.cnn.com/rss/edition.rss', 
-                    'bbc-top-stories':'http://feeds.bbci.co.uk/news/rss.xml', 
-                    'ibn-top-stories':'http://ibnlive.in.com/ibnrss/top.xml',
- 
-                    'cnn-world':'http://rss.cnn.com/rss/edition_world.rss', 
-                    'bbc-world':'http://feeds.bbci.co.uk/news/world/rss.xml', 
-                    'ibn-world':'http://ibnlive.in.com/ibnrss/rss/world/world.xml',
- 
-                    'cnn-world-business':'http://rss.cnn.com/rss/edition_business.rss', 
-                    'bbc-world-business':'http://feeds.bbci.co.uk/news/business/rss.xml', 
-                    'ibn-world-business':'http://ibnlive.in.com/ibnrss/rss/business/business.xml',
- 
-                    'cnn-technology':'http://rss.cnn.com/rss/edition_technology.rss', 
-                    'bbc-technology':'http://feeds.bbci.co.uk/news/technology/rss.xml', 
-                    'ibn-technology':'http://ibnlive.in.com/ibnrss/rss/tech/tech.xml',
- 
-                    'cnn-world-soprts':'http://rss.cnn.com/rss/edition_sport.rss', 
-                    'bbc-world-soprts':'http://news.bbc.co.uk/sport1/hi/help/rss/default.stm', 
-                    'ibn-world-soprts':'http://ibnlive.in.com/ibnrss/rss/sports/sports.xml',
-                }
- 
-                url = rss_url_map[this.id];
-                $.ajax({
-                    url: 'http://ajax.googleapis.com/ajax/services/feed/load?v=1.0&num=1000&callback=?&q=' + encodeURIComponent(url),
-                    dataType: "jsonp",
-                    jsonpCallback: 'successCallback',
-                    async: true,
-                    beforeSend: function() {
-                        $.mobile.showPageLoadingMsg(true);
-                    },
-                    complete: function() {
-                        $.mobile.hidePageLoadingMsg();
-                    },
-                    success: function(result) {
-                        ajax.jsonResult = result;
-                        $.mobile.changePage("#two");
-                    },
-                    error: function(request, error) {
-                    }
-                });
-            });        
-        });
- 
-        $(document).on('pagebeforeshow', '#two', function(){       
-            ajax.parseJSONP(ajax.jsonResult);
-        });
- 
-        var ajax = {  
-            jsonResult : null,
-            parseJSONP:function(result){
-                feedUrl = result.responseData.feed.feedUrl;
-                pgtitle = result.responseData.feed.title;
-                $("#pgtitle").text(pgtitle).trigger('create');
- 
-                htmlData = '';
-                entriesList = result.responseData.feed.entries;
-                $.each(entriesList, function (index, value) {
-                    title = value.title;
-                    link = value.link;
-                    publishedDate = value.publishedDate;
-                    contentSnippet = value.contentSnippet;
-                    content = value.content;
-                    htmlData += '<li><a href="'+link+'" data-rel="external" data-ajax="false"><h2>'+title+'</h2><p>'+contentSnippet+'</p></a></li>';
-                });
-                $('#newsdata').empty();
-                $("#newsdata").html(htmlData);
-                $('#newsdata').listview('refresh');
-            }
+<head>
+	<title>Agenda Parlamento de Andalucía</title>
+	<meta charset="utf-8">
+  	<script type="text/javascript" src="interact.min.js" ></script>  	  	
+
+	<link rel="stylesheet" type="text/css" href="jquery.mobile-1.4.5.min.css"/>
+	<script type="text/javascript" src="jquery-1.12.3.min.js"></script>
+  	<script type="text/javascript" src="jquery.mobile-1.4.5.min.js"></script>    
+  	
+  	<meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1">
+
+<style type="text/css">
+    .ui-footer .ui-btn-right {
+	}
+	
+	.articleContent > table > tbody > tr > td > font > br {
+  		display: none;
+	}
+	
+	.articleContent > table > tbody > tr > td > font > br + div {
+  		display: none;
+	}
+	
+	.articleContent * {
+  		font-size: medium !important;
+	}
+
+</style>
+</head>
+
+<body>
+
+<script type='text/javascript'>
+var maxLength = 20; 
+
+document.write('<div data-role="page" id="list">' + '  <div data-role="header" data-position="fixed">' + '    <h1>Agenda Parlamento de Andalucía</span></h1> ' + '  </div>' + '  <div data-role="content">' + '    <ul data-role="listview" data-filter="false" id="articleList">');
+for (var i = 1; i <= maxLength; i++) {
+    document.write('<li id="list' + i + '"><a href="#article' + i + '" id="link' + i + '">&nbsp;</a></li>');
+}
+
+document.write('    </ul>' + '  </div>' + '</div>');
+
+for (i = 1; i <= maxLength; i++) {
+    document.write('<div data-role="page" id="article' + i + '">' + '  <div data-role="header" data-position="inline">' + '    <a href="#list" data-role="button" data-icon="home" data-back="true">Atrás</a>' + '    <h1 id="articleHeader' + i + '">&nbsp;</h1>' + '    <a href="#" id="openButton' + i + '" data-role="button" data-icon="plus"' + '      class="ui-btn-right" rel="external">Abrir</a>' + '  </div>' + '  <div data-role="content">' + '    <div id="articleContent' + i + '" class="articleContent"></div>' + '    <div data-role="controlgroup" data-type="horizontal">' + '      <a href="#article' + String(i - 1) + '" data-role="button" data-icon="arrow-l"' + '        data-inline="true" class="prevButton">Prev</a>' + '      <a href="#article' + String(i + 1) + '" data-role="button" data-icon="arrow-r"' + '        data-inline="true" class="nextButton" data-iconpos="right">Next</a>' + '    </div>' + '  </div>' + '</div>');
+} 
+
+$(function() {    
+    getOnlineFeed('http://www.parlamentodeandalucia.es/webdinamica/portal-web-parlamento/utilidades/sindicacionrss.do?contenido=Agendas');
+});
+
+var listEntries = function(json) {
+    if (!json.responseData.feed.entries) return false;
+    $('#widgetTitle').text(json.responseData.feed.title);
+    var articleLength = json.responseData.feed.entries.length;
+    articleLength = (articleLength > maxLength) ? maxLength : articleLength;
+    for (var i = 1; i <= articleLength; i++) {
+        var entry = json.responseData.feed.entries[i - 1];
+        $('#link' + i).text(entry.title);
+        $('#articleHeader' + i).text(entry.title);
+        $('#openButton' + i).attr('href', entry.link);
+        $('#articleContent' + i).append(entry.content);
+    }
+    $('#article1 .prevButton').remove();
+    $('#article' + articleLength + ' .nextButton').remove();
+    if (articleLength < maxLength) {
+        for (i = articleLength + 1; i <= maxLength; i++) {
+            $('#list' + i).remove();
+            $('#article' + i).remove();
         }
-        </script>
-    </head> 
-    <body> 
-        <!-- Start of first page: #one -->
-        <div data-role="page" id="one" data-theme="a">
-            <div data-role="header">
-                <h1>Connected</h1>
-            </div>
-            <div data-role="content" data-theme="a">
-                <div data-role="collapsible-set">
-                    <div data-role="collapsible">
-                        <h3>Top Stories</h3>
-                        <ul data-role="listview" data-theme="c">
-                            <li><a href="#" class="news-chanel" id="cnn-top-stories"><h2>CNN</h2><p class="ui-li-aside">CNN</p></a></li>
-                            <li><a href="#" class="news-chanel" id="bbc-top-stories"><h2>BBC</h2><p class="ui-li-aside">BBC</p></a></li>
-                            <li><a href="#" class="news-chanel" id="ibn-top-stories"><h2>IBN</h2><p class="ui-li-aside">IBN</p></a></li>
-                        </ul>
-                    </div>
-                    <div data-role="collapsible">
-                        <h3>World</h3>
-                        <ul data-role="listview" data-theme="c">
-                            <li><a href="#" class="news-chanel" id="cnn-world"><h2>CNN</h2><p class="ui-li-aside">CNN</p></a></li>
-                            <li><a href="#" class="news-chanel" id="bbc-world"><h2>BBC</h2><p class="ui-li-aside">BBC</p></a></li>
-                            <li><a href="#" class="news-chanel" id="ibn-world"><h2>IBN</h2><p class="ui-li-aside">IBN</p></a></li>
-                        </ul>
-                    </div>
-                    <div data-role="collapsible">
-                        <h3>World Business</h3>
-                        <ul data-role="listview" data-theme="c">
-                            <li><a href="#" class="news-chanel" id="cnn-world-business"><h2>CNN</h2><p class="ui-li-aside">CNN</p></a></li>
-                            <li><a href="#" class="news-chanel" id="bbc-world-business"><h2>BBC</h2><p class="ui-li-aside">BBC</p></a></li>
-                            <li><a href="#" class="news-chanel" id="ibn-world-business"><h2>IBN</h2><p class="ui-li-aside">IBN</p></a></li>
-                        </ul>
-                    </div>
-                    <div data-role="collapsible">
-                        <h3>Technology</h3>
-                        <ul data-role="listview" data-theme="c">
-                            <li><a href="#" class="news-chanel" id="cnn-technology"><h2>CNN</h2><p class="ui-li-aside">CNN</p></a></li>
-                            <li><a href="#" class="news-chanel" id="bbc-technology"><h2>BBC</h2><p class="ui-li-aside">BBC</p></a></li>
-                            <li><a href="#" class="news-chanel" id="ibn-technology"><h2>IBN</h2><p class="ui-li-aside">IBN</p></a></li>
-                        </ul>
-                    </div>
-                    <div data-role="collapsible">
-                        <h3>World Sport</h3>
-                        <ul data-role="listview" data-theme="c">
-                            <li><a href="#" class="news-chanel" id="cnn-world-soprts"><h2>CNN</h2><p class="ui-li-aside">CNN</p></a></li>
-                            <li><a href="#" class="news-chanel" id="bbc-world-soprts"><h2>BBC</h2><p class="ui-li-aside">BBC</p></a></li>
-                            <li><a href="#" class="news-chanel" id="ibn-world-soprts"><h2>IBN</h2><p class="ui-li-aside">IBN</p></a></li>
-                        </ul>
-                    </div>
-                    <p>&nbsp;</p>
-                </div>    
-            </div>
-            <div data-role="footer" class="bottom">
-                <h4>Page Footer</h4>
-            </div>
-        </div><!-- /page one -->
+    }
+};
+
+var getOnlineFeed = function(url) {
+    var script = document.createElement('script');
+    script.setAttribute('src', 'http://ajax.googleapis.com/ajax/services/feed/load?callback=listEntries&hl=ja&output=json-in-script&q=' + encodeURIComponent(url) + '&v=1.0&num=' + maxLength);
+    script.setAttribute('type', 'text/javascript');
+    document.documentElement.firstChild.appendChild(script);
+};
+
+var getOfflineFeed = function(url) {
+    var script = document.createElement('script');
+    script.setAttribute('src', url);
+    script.setAttribute('type', 'text/javascript');
+    document.documentElement.firstChild.appendChild(script);
+};
  
-        <!-- Start of second page: #two -->
-        <div data-role="page" id="two" data-theme="a">
-            <div data-role="header">
-                <h1 id="pgtitle"></h1>
-                <a href="#one" class="ui-btn-left">Back</a>
-            </div>
-            <div data-role="content" data-theme="a">  
-                <ul data-role="listview" data-inset="true" data-filter="true" id="newsdata">
-                </ul>
-            </div>
-            <div data-role="footer" class="bottom">
-                <a href="#one" class="ui-btn-left">Back</a>
-            </div>
-        </div><!-- /page two -->
-    </body>
+</script>
+</body>
 </html>
+
