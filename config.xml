@@ -40,5 +40,9 @@
   <gap:plugin name="org.apache.cordova.splashscreen"/>
   <gap:plugin name="org.apache.cordova.vibration"/>
   <icon src="icon.png"/>  
-  <access origin="http://ajax.googleapis.com" />
+  <access origin="*" />
+  <plugin name="cordova-plugin-whitelist" version="1" />
+    <allow-navigation href="*" />
+    <allow-intent href="http://*/*" />
+    <allow-intent href="https://*/*" />
 </widget>
