@@ -73,7 +73,7 @@ var listEntries = function(json) {
 
 var getOnlineFeed = function(url) {
     var script = document.createElement('script');
-    script.setAttribute('src', 'http://ajax.googleapis.com/ajax/services/feed/load?callback=listEntries&hl=ja&output=json-in-script&q=' + encodeURIComponent(url) + '&v=1.0&num=');
+    script.setAttribute('src', 'http://ajax.googleapis.com/ajax/services/feed/load?callback=listEntries&hl=ja&output=json-in-script&q=' + encodeURIComponent(url) + '&v=1.0&num=16');
     script.setAttribute('type', 'text/javascript');
     document.documentElement.firstChild.appendChild(script);
 };
