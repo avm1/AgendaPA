@@ -6,6 +6,9 @@
   <platform name="android"></platform>
   
   <preference name="SplashMaintainAspectRatio" value="true" />
+  <preference name="SplashScreen" value="screen" />
+  <preference name="SplashScreenDelay" value="3000" />
+
   <preference name="permissions" value="none"/>
   <preference name="phonegap-version" value="cli-5.2.0" />
   <preference name="orientation" value="default"/>
@@ -40,9 +43,10 @@
   <gap:plugin name="org.apache.cordova.network-information"/>
   <gap:plugin name="org.apache.cordova.splashscreen"/>
   <gap:plugin name="org.apache.cordova.vibration"/>
+  <gap:plugin name="org.apache.cordova.splashscreen"/>
   
   <icon src="icon.png"/>  
-  <splash src="anagrama.png" width="246" height="83" />  
+  <splash src="anagrama.png" density="land-mdpi"/>
   
   <plugin name="cordova-plugin-whitelist" version="1" />    
   <access origin="*" />
