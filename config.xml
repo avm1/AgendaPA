@@ -41,6 +41,7 @@
   <gap:plugin name="org.apache.cordova.vibration"/>
   
   <icon src="icon.png"/>
+  <preference name=”SplashMaintainAspectRatio” value=”true” />
   <splash src="anagrama.png" width="246" height="83" />  
   
   <plugin name="cordova-plugin-whitelist" version="1" />    
