@@ -5,16 +5,11 @@
   <content src="index.html"/>
 
   <platform name="android"></platform>
-
+  
   <preference name="SplashScreen" value="screen" />
   <preference name="SplashScreenDelay" value="3000" />
 
-
-  <gap:splash gap:platform="android" gap:qualifier="port-ldpi" src="anagrama-mdpi.png" />
-  <gap:splash gap:platform="android" gap:qualifier="port-mdpi" src="ranagrama-mdpi.png" />
-  <gap:splash gap:platform="android" gap:qualifier="port-hdpi" src="anagrama-hdpi.png" />
-  <gap:splash gap:platform="android" gap:qualifier="port-xhdpi" src="anagrama-xhdpi.png" />
-  
+  <splash src="anagrama.png" width="410" height="63" />  
   
   <preference name="permissions" value="none"/>
   <preference name="phonegap-version" value="cli-5.2.0" />
