@@ -4,25 +4,18 @@
   <author email="a.vilches@parlamento-and.es">Parlamento de Andalucía</author>
   <content src="index.html"/>
 
-  <platform name="android">
-  	<splash src="anagrama-hdpi.png" density="port-hdpi"/>
-  	<splash src="anagrama-ldpi.png" density="port-ldpi"/>
-  	<splash src="anagrama-mdpi.png" density="port-mdpi"/>
-  	<splash src="anagrama-xhdpi.png" density="port-xhdpi"/>
-  	<splash src="anagrama-xxhdpi.png" density="port-xxhdpi"/>
-  	<splash src="anagrama-xxxhdpi.png" density="port-xxxhdpi"/>
+  <platform name="android"></platform>
 
-  	<splash src="anagrama-hdpi.png" density="land-hdpi"/>
-  	<splash src="anagrama-ldpi.png" density="land-ldpi"/>
-  	<splash src="anagrama-mdpi.png" density="land-mdpi"/>
-  	<splash src="anagrama-xhdpi.png" density="land-xhdpi"/>
-  	<splash src="anagrama-xxhdpi.png" density="land-xxhdpi"/>
-  	<splash src="anagrama-xxxhdpi.png" density="land-xxxhdpi"/>
-  </platform>
-  
   <preference name="SplashScreen" value="screen" />
   <preference name="SplashScreenDelay" value="3000" />
 
+
+  <gap:splash gap:platform="android" gap:qualifier="port-mdpi" src="anagrama-ldpi.png" />
+  <gap:splash gap:platform="android" gap:qualifier="port-mdpi" src="ranagrama-mdpi.png" />
+  <gap:splash gap:platform="android" gap:qualifier="port-hdpi" src="anagrama-hdpi.png" />
+  <gap:splash gap:platform="android" gap:qualifier="port-xhdpi" src="anagrama-xhdpi.png" />
+  
+  
   <preference name="permissions" value="none"/>
   <preference name="phonegap-version" value="cli-5.2.0" />
   <preference name="orientation" value="default"/>
