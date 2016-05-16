@@ -41,7 +41,7 @@
   <gap:plugin name="org.apache.cordova.vibration"/>
   
   <icon src="icon.png"/>
-  <splash src="anagrama.png"/>  
+  <splash src="anagrama.png" width="246" height="83" />  
   
   <plugin name="cordova-plugin-whitelist" version="1" />    
   <access origin="*" />
