@@ -3,7 +3,7 @@
   <description>Agenda Parlamento de Andalucía</description>
   <author email="a.vilches@parlamento-and.es">Parlamento de Andalucía</author>
   <content src="index.html"/>
-
+  
   <platform name="android"></platform>
   
   <preference name="SplashScreen" value="screen" />
