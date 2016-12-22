@@ -1,5 +1,5 @@
 <widget xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/" id="es.parlamentodeandalucia.rss" version="1.0.0">
-  <name>Agenda Parlamento de Andalucía</name>
+  <name>Agenda Parlamento de Andalucía 1</name>
   <description>Agenda Parlamento de Andalucía</description>
   <author email="a.vilches@parlamento-and.es">Parlamento de Andalucía</author>
   <content src="index.html"/>
