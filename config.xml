@@ -1,4 +1,4 @@
-<widget xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/2.0" id="es.parlamentodeandalucia.rss" version="1.0.0">
+<widget xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0" id="es.parlamentodeandalucia.rss" version="1.0.0">
   <name>Agenda Parlamento de Andalucía</name>
   <description>Agenda Parlamento de Andalucía</description>
   <author email="a.vilches@parlamento-and.es">Parlamento de Andalucía</author>
@@ -38,8 +38,8 @@
   <gap:plugin name="org.apache.cordova.dialogs"/>
   
 
-
-  <gap:plugin name="org.apache.cordova.file" source="npm" />
+   
+  <plugin name="org.apache.cordova.file" spec="1.4.1" source="pgb" />
   
   
   <gap:plugin name="org.apache.cordova.geolocation"/>
