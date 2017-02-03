@@ -12,7 +12,7 @@
   <splash src="agenda.png" width="640" height="960" />  
   
   <preference name="permissions" value="none"/>
-  <preference name="phonegap-version" value="cli-6.3.0" />
+  <preference name="phonegap-version" value="cli-6.5.0" />
   <preference name="orientation" value="default"/>
   <preference name="target-device" value="universal"/>
   <preference name="fullscreen" value="true"/>
